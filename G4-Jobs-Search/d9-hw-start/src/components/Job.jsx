@@ -1,14 +1,19 @@
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
- import { setAddFavorite } from '../redux/actions/favoritesActions'; 
-import { Star, StarFill } from "react-bootstrap-icons";
+ import { AddFavorite, RemoveFavorite, setAddFavorite } from '../redux/actions/favoritesActions'; 
 
 const Job = ({ data }) => {
-   const dispatch = useDispatch();
-  const favorites = useSelector(state=>state.list);
-  const isFavorite = favorites.includes(data.company_name); 
-  <Row
+  
+  console.log(useSelector(state=> state))
+
+   const favorites = useSelector(state=>state.list); 
+   console.log(favorites);
+   const isFavorite = favorites?.includes(data.company_name); 
+  const dispatch = useDispatch();
+  return(
+<Container>
+<Row
     className="mx-0 mt-3 p-3"
     style={{ border: '1px solid #00000033', borderRadius: 4 }}
   >
@@ -19,31 +24,20 @@ const Job = ({ data }) => {
           >
             Aggiungi preferito
             </Button>
-    {/* {isFavorite ? (
-          <StarFill
-            color="gold"
-            size={22}
-            className="me-2 my-auto"
-            onClick={() =>
-              dispatch({
-                type: "REMOVE_FAVORITE",
-                payload: data.company_name
-              })
-            }
-          />
-        ) : (
-          <Star
-            color="gold"
-            size={22}
-            className="me-2 my-auto"
-            onClick={() =>
-              dispatch({
-                type: "ADD_FAVORITE",
-                payload: data.company_name
-              })
-            }
-          />
-        )} */}
+            {isFavorite ? (
+            <Button onClick={() =>
+              dispatch(RemoveFavorite(data.company_name))
+            }></Button>
+
+          ) : (
+            <Button className='p-1 border border-0'
+              variant="outline-success"
+              onClick={() => dispatch(AddFavorite(data.title))}
+            >
+              ⭐
+            </Button>
+          )
+          }
       <Link to={`/${data.company_name}`}>{data.company_name}</Link>
     </Col>
     <Col xs={9}>
@@ -52,6 +46,10 @@ const Job = ({ data }) => {
       </a>
     </Col>
   </Row>
+</Container>
+  )
+
+  
 }
 
 export default Job

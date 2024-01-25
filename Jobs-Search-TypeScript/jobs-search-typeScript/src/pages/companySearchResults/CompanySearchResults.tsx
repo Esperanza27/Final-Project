@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Navbar, CloseButton } from "react-bootstrap";
-import JobSearch from "../components/jobSearch/JobSearch";
+import JobSearch from "../../components/jobSearch/JobSearch";
 import { Link, useParams } from "react-router-dom";
 
 const CompanySearchResults = () => {
