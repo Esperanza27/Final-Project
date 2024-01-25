@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import JobSearch from "../jobSearch/JobSearch";
-import { useParams } from "react-router-dom";
+import { Container, Row, Col, Navbar, CloseButton } from "react-bootstrap";
+import JobSearch from "../components/jobSearch/JobSearch";
+import { Link, useParams } from "react-router-dom";
 
 const CompanySearchResults = () => {
   const [jobs, setJobs] = useState([]);
@@ -29,7 +29,14 @@ const CompanySearchResults = () => {
   };
 
   return (
-    <Container>
+    <Container fluid >
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container fluid className="d-flex justify-content-between p-3">
+          <Link to={"/"}>Home</Link>
+          <Link to={"/"}><CloseButton /></Link>
+        </Container>
+
+      </Navbar>
       <Row>
         <Col className="my-3">
           <h1 className="display-4">Job posting for: {params.company}</h1>

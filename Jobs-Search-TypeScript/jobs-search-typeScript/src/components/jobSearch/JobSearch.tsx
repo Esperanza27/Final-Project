@@ -1,4 +1,4 @@
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,43 +6,53 @@ import { addToFavorite, removeFromFavorite } from '../../reducers/actions/favori
 
 type TJobSearchProps = {
   data: any
-} 
-const JobSearch = ({data}:TJobSearchProps) => {
-   const favorites = useSelector((state:any) =>state.favorites?.list)
-   console.log(favorites);
-   
+}
+const JobSearch = ({ data }: TJobSearchProps) => {
+  console.log(useSelector(state=> state)); 
+ const favorites = useSelector((state: any) => state.job.results)
+  
+  console.log(data);
+  
+
   const dispatch = useDispatch()
- 
-  const isFavorite = favorites?.list.includes(data.company_name)
+
+  const isFavorite = favorites?.includes(data.company_name) 
 
   return (
-    <Row
-      className="mx-0 mt-3 p-3"
-      style={{ border: '1px solid #00000033', borderRadius: 4 }}
-    >
-      <Col xs={3}>
-        {isFavorite ? (
-          <Button onClick={() =>
-            dispatch(removeFromFavorite(data.company_name))
-          }></Button>
+    <Container>
+      <Row
+        className="mx-0 mt-3 p-3 d-flex "
+        style={{ border: '1px solid #00000033', borderRadius: 4 }}
+      >
+        <Col xs={12} >
+          <Row >
+            <Col xs={5} className='text-start px-0'>
+              <a href={data.url} target="_blank" rel="noreferrer">
+            {data.title}
+          </a>
+          </Col>
+            <Col xs={4} md={5}>
+              <Link to={`/${data.company_name}`}>{data.company_name}</Link>
+              </Col>
+            <Col xs={2}>
+              {isFavorite ? (
+            <Button onClick={() =>
+              dispatch(removeFromFavorite(data.company_name))
+            }></Button>
 
-        ) : (
-          <Button
-            variant="outline-success"
-            onClick={() => dispatch(addToFavorite(data.title))}
-          >
-            Aggiungi preferito
-          </Button>
-        )
-        }
-        <Link to={`/${data.company_name}`}>{data.company_name}</Link>
-      </Col>
-      <Col xs={9}>
-        <a href={data.url} target="_blank" rel="noreferrer">
-          {data.title}
-        </a>
-      </Col>
-    </Row>
+          ) : (
+            <Button className='p-1 border border-0'
+              variant="outline-success"
+              onClick={() => dispatch(addToFavorite(data.title))}
+            >
+              ⭐
+            </Button>
+          )
+          } </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

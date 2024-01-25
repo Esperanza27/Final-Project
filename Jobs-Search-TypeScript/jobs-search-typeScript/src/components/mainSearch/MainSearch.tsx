@@ -32,8 +32,12 @@ const MainSearch = () => {
         console.log(error);
       }
     }; */
-  const jobs = useSelector((state) => state.job.results)
-  const dispatch = useDispatch()
+    //lista di result search
+
+  const jobs = useSelector((state:any) => state.job.results) 
+  /* console.log(jobs); */
+  
+  const dispatch: any = useDispatch()
 
   const handleChange = (e: any) => {
     setQuery(e.target.value)
@@ -49,15 +53,19 @@ const MainSearch = () => {
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1 className="display-1">Remote Jobs Search</h1>
-          <Button variant="outline-primary" onClick={() => navigate("/favorites")}>Vai ai preferiti</Button>
+          <Button variant="outline-primary" onClick={() => navigate("/favorites")}>go to Favorites</Button>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
+            <Form.Control 
+            type="search" 
+            value={query} 
+            onChange={handleChange} 
+            placeholder="type and press Enter" />
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
-          {jobs.map((jobData: any) => (
+          {jobs?.map((jobData: any) => (            
             <JobSearch key={jobData._id} data={jobData} />
           ))}
         </Col>
