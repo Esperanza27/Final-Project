@@ -104,7 +104,7 @@ const MyGraphic = () => {
   
 
   return (
-    <div className='d-flex justify-content-center'>
+    <div className='d-flex justify-content-center px-2 py-1 mx-0'>
       <Line options={options} data={data}   />
     </div>
   )

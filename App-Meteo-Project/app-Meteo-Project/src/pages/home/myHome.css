@@ -1,17 +1,11 @@
-.cards {
-  width: "49.5%";
-  height: "46.5%"
+.myGraphic{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+
 }
-/* .text {
-    font-size: 14px;
-  } */
+
+
+
+
   
-  @media (max-width: 480px) {
-    .cards {
-      width: "49.8%";
-      height: "24.8%";
-      
-    }
-  }
- 
- 

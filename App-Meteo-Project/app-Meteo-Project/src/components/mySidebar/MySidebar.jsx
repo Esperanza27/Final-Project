@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
 import { WindIcon } from "../../assets/icons/WindIcon";
 import MyCard from "../myCard/MyCard";
-
+import "./mySidebar.css"
 const MySidebar = ({ sys, name, main }) => {
   const getTime = useCallback((time) => {
     return `${new Date(time).getHours()}:${new Date(time).getMinutes()}`;
@@ -26,12 +26,13 @@ const MySidebar = ({ sys, name, main }) => {
   }, [getTime, sys?.sunrise, sys?.sunset]);
 
   return (
-    <div className="my-0 my-md-2 py-1 py-md-4 px-3  d-flex flex-column  gap-1 gap-md-4 border border-1 rounded-3">
-      <div className="d-flex justify-content-between ">
+    <div className="my-0 my-md-2 py-1 py-md-4 px-3  d-flex flex-column  gap-1 gap-md-4 border border-1 rounded-3 siderHeight">
+      <div className="d-flex justify-content-between siderNav ">
         <p className="my-2">{name}</p>
         <p className="my-2">{getTime(new Date().getTime())}</p>
       </div>
-      <div>
+      <div className=" justifySidebar">
+      <div >
         <h5 className="my-0 ">{`${Math.round(main?.temp)}°C`}</h5>
         <p className="mb-2 "> scattered clouds </p>
         <hr className="my-1 " />
@@ -46,6 +47,8 @@ const MySidebar = ({ sys, name, main }) => {
           </div>
         ))}
       </div>
+      </div>
+    
     </div>
   );
 };

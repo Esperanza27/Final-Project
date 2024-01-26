@@ -103,8 +103,8 @@ const Home = () => {
     <div className="container-fluid " /* style={{ height: "90vh" }} */>
       <div className="row" /* style={{ height: "99vh" }} */>
         <div className="col-sm-12">
-          <div className="row " /* style={{ height: "100%" }} */>
-            <div className="col-xs-12 d-flex flex-column gap-1 my-2 col-md-8">
+          <div className="row" /* style={{ height: "100%" }} */>
+            <div className="col-xs-12 d-flex flex-column gap-1 my-2 col-md-8 ">
               <div className="row ">
                 <MyNavbar date={dateToday} onChange={onChange} />
               </div>
@@ -115,7 +115,7 @@ const Home = () => {
                 {cardData.map((card, i) => (
                   <div
                     key={i}
-                    className="col-xs-10 d-flex align-items-center cards py-1 "
+                    className="col-xs-10 col-md-6 d-flex align-items-center cards py-1 "
                     
                   >
                     <MyCard {...card} />
@@ -123,13 +123,12 @@ const Home = () => {
                 ))}
               </div>
 
-              <div
-                className="row text-center m-0 d-flex justify-content-center border rounded d-flex align-items-stretch">
+              <div className="row text-center px-0 d-flex justify-content-center border rounded d-flex myGraphic">
                 <MyGraphic />
               </div>
             </div>
             <div
-              className="col-xs-12 col-md-4 "
+              className="col-xs-12 col-md-4"
               /* style={{ height: "100%" }} */
             >
               <MySidebar {...weather} />

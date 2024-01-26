@@ -1,0 +1,37 @@
+.siderHeight {
+    height: 97%;
+/*     background-color: red; */
+}
+
+.siderHeight .siderNav {
+    height: 15%;
+}
+
+.siderHeight .justifySidebar {
+    /* background-color: blanchedalmond; */
+    display: flex;
+    flex-direction: column;
+  row-gap: 50px;
+margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+    .cards {
+        width: "49.8%";
+        height: "40%";
+
+    }
+    .siderHeight {
+        height: 100%;
+       /*  background-color: rgb(0, 89, 255); */
+        gap: 5px;
+        
+    }
+    .siderHeight .justifySidebar {
+        /* background-color: blanchedalmond; */
+        display: flex;
+        flex-direction: column;
+      row-gap: 10px;
+    margin-top: 0px;
+    }
+}
