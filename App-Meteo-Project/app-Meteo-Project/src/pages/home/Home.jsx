@@ -9,6 +9,9 @@ import { weatherThunk, forecastThunk } from "../../store/meteoThunks";
 import { MyLoader } from "../../components/myLoader/MyLoader";
 import { useNavigate } from "react-router-dom";
 import MyGraphic from "../../components/myGraphic/MyGraphic";
+import iconTemperature from "../../assets/icons/temperature.png";
+import iconRain from "../../assets/icons/rain.png";
+import iconHumidity from "../../assets/icons/humidity.png";
 import "./myHome.css";
 
 const Home = () => {
@@ -75,19 +78,19 @@ const Home = () => {
         dynamicValue: `${gust} km/h`,
       },
       {
-        icon: <WindIcon />,
+        icon: <img src={iconRain} style={{ width: "25px", height: "25px" }} />,
         type: "Rain Chance",
         currentValue: "0%",
         dynamicValue: "0%",
       },
       {
-        icon: <WindIcon />,
+        icon:  <img src={iconTemperature} style={{ width: "25px", height: "25px" }} />,
         type: "Temperature",
         currentValue: `${Math.round(temp)}°C`,
         dynamicValue: `${temp_min}°C ↑`,
       },
       {
-        icon: <WindIcon />,
+        icon: <img src={iconHumidity} style={{ width: "25px", height: "25px" }} />,
         type: "Humidity",
         currentValue: `${humidity}%`,
         dynamicValue: `${humidity}%`,
@@ -108,10 +111,7 @@ const Home = () => {
               <div className="row ">
                 <MyNavbar date={dateToday} onChange={onChange} />
               </div>
-              <div
-                className="row d-flex justify-content-center align-items-center"
-                
-              >
+              <div className="row d-flex justify-content-center align-items-center">
                 {cardData.map((card, i) => (
                   <div
                     key={i}

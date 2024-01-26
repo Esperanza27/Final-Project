@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
 import { WindIcon } from "../../assets/icons/WindIcon";
 import MyCard from "../myCard/MyCard";
+import iconSunrise from "../../assets/icons/sunrise (1).png";
+import iconSunset from "../../assets/icons/sunset.png";
 import "./mySidebar.css"
 const MySidebar = ({ sys, name, main }) => {
   const getTime = useCallback((time) => {
@@ -11,13 +13,13 @@ const MySidebar = ({ sys, name, main }) => {
   const cardData2 = useMemo(() => {
     return [
       {
-        icon: <WindIcon />,
+        icon: <img src={iconSunrise} style={{ width: "25px", height: "25px" }} />,
         type: "sunrise",
         currentValue: `${getTime(sys?.sunrise)} `,
         dynamicValue: `2 hours ago`,
       },
       {
-        icon: <WindIcon />,
+        icon: <img src={iconSunset} style={{ width: "30px", height: "30px" }} />,
         type: "sunset",
         currentValue: `${getTime(sys?.sunset)}`,
         dynamicValue: `In 8 hours`,

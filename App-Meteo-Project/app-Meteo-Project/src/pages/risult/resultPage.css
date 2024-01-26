@@ -1,15 +1,3 @@
-.title {
-    width: "49.5%";
-    height: "46.5%"
-  }
-  /* .text {
-      font-size: 14px;
-    } */
-    
-    @media (max-width: 480px) {
-      .cards {
-        width: "49.8%";
-        height: "24.8%";
-        
-      }
-    }
+.navbarResult{
+  height: 15%;
+}

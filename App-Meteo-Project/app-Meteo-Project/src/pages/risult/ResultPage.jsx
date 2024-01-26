@@ -13,7 +13,7 @@ import iconSunrise from "../../assets/icons/sunrise (1).png";
 import iconSunset from "../../assets/icons/sunset.png";
 import iconRain from "../../assets/icons/rain.png";
 import iconHumidity from "../../assets/icons/humidity.png";
-import { Line } from "react-chartjs-2";
+
 
 const ResultPage = () => {
   // assegniamo alle costanti i valori delle risposte delle chiamate di rete
@@ -106,7 +106,7 @@ const ResultPage = () => {
 
   return (
     <div className="container py-3 " style={{ height: "90vh" }}>
-      <div className="d-flex justify-content-between py-1 mb-3">
+      <div className="d-flex justify-content-between py-1 mb-3 ">
         <NavbarBrand href="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -121,25 +121,22 @@ const ResultPage = () => {
           </svg>{" "}
           HOME
         </NavbarBrand>
-        <div className="mt-4 d-flex justify-content-center ">
-          <h1 style={{whiteSpace:'nowrap'}}>{name}</h1>
-        </div>
-
         <div className="d-flex gap-2 text-center">
           <p>{getTime(new Date().getTime())}</p>
           <CloseButton onClick={() => navigate("/")} />
         </div>
       </div>
-      <div className=" d-flex flex-wrap gap-3 justify-content-center mt-3 mb-5">
+
+      <div className="mt-1 mb-3 d-flex justify-content-center">
+          <h1 className="px-0 mx-0"  style={{whiteSpace:'nowrap'}}>{name}</h1>
+        </div>
+
+      <div className=" row d-flex justify-content-center align-items-center mt-3 mb-5 gap-3 my-2 ">
         {cardData3.map((card, i) => (
           <div
             key={i}
-            className="col-xs-10 py-0 px-1 d-flex"
-            style={{
-              width: "49.5%",
-              alignItems: "center",
-              height: "46.5%",
-            }}
+            className="col-xs-10 col-md-10 py-0 w-75"
+          
           >
             <MyCard {...card} />
           </div>

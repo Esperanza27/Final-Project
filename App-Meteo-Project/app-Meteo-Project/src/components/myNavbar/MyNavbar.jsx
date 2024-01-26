@@ -18,14 +18,14 @@ const MyNavbar = ({ date, onChange }) => {
                 <small className="py-0 my-0 ">{date.dateDetails}</small>
               </Navbar.Brand>
             </div>
-            <div className="col-6 d-flex align-content-center flex-wrap">
+            <div className="col-6 d-flex align-content-center justify-content-end flex-wrap">
               <Form.Select
                 aria-label="Default select example"
                 style={{ height: "40px" }}
                 onChange={onChange}
                 className="bg-transparent"
               >
-                <option value={''}>Choose a city...</option>
+                <option value={''} className="">Choose a city...</option>
                 {cities.map((city, i) => (
                   <option key={i} value={city.value}>
                     {city.label}
