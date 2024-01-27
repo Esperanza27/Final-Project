@@ -8,7 +8,7 @@ type TJobSearchProps = {
   data: any
 }
 const JobSearch = ({ data }: TJobSearchProps) => {
- /*  console.log(useSelector(state=> state));  */
+
  const favorites = useSelector((state: any) => state.job.results)
  
   const dispatch = useDispatch()

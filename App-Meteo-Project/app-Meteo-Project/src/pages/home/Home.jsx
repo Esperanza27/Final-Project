@@ -50,7 +50,7 @@ const Home = () => {
     main: { temp = "", temp_min = "", humidity = "" } = {},
   } = weather;
 
-  const dateToday = useMemo(() => {
+  const dateDetails = useMemo(() => {
     const date = new Date();
 
     const monthNum = date.getMonth();
@@ -109,7 +109,7 @@ const Home = () => {
           <div className="row" /* style={{ height: "100%" }} */>
             <div className="col-xs-12 d-flex flex-column gap-1 my-2 col-md-8 ">
               <div className="row ">
-                <MyNavbar date={dateToday} onChange={onChange} />
+                <MyNavbar dateDetails={dateDetails} onChange={onChange} />
               </div>
               <div className="row d-flex justify-content-center align-items-center">
                 {cardData.map((card, i) => (

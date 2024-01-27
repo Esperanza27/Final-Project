@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/esm/Container";
+import iconSunrise from "../../assets/icons/sunrise.png";
+import iconSunset from "../../assets/icons/sunset.png";
+
 const MyTable = ({
   day = "lunedi",
   humidity = "3",
-  icon1 = "icon1",
-  icon2 = "icon2",
+  icon1 = <img src={iconSunrise} style={{ width: "25px", height: "25px" }} />,
+  icon2 = <img src={iconSunset} style={{ width: "30px", height: "30px" }} />,
   tempMax = 16,
   tempMin = 17,
 }) => {

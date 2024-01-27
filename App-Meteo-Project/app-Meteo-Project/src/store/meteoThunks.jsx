@@ -38,8 +38,7 @@ const forecastThunk = createAsyncThunk(
 
     // qui viene effettuata una GET by latitudine e longitudine.
     if (Object.keys(weather).length) {
-      const response = forecastMock;
-      await fetch(
+      const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`,
         {
           method: "GET",

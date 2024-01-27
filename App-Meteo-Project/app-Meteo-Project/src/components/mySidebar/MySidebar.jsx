@@ -1,25 +1,30 @@
 import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
-import { WindIcon } from "../../assets/icons/WindIcon";
 import MyCard from "../myCard/MyCard";
-import iconSunrise from "../../assets/icons/sunrise (1).png";
+import iconSunrise from "../../assets/icons/sunrise.png";
 import iconSunset from "../../assets/icons/sunset.png";
-import "./mySidebar.css"
+import "./mySidebar.css";
 const MySidebar = ({ sys, name, main }) => {
   const getTime = useCallback((time) => {
-    return `${new Date(time).getHours()}:${new Date(time).getMinutes()}`;
+    const min = new Date(time).getMinutes();
+
+    return `${new Date(time).getHours()}:${min > 9 ? min : "0" + min}`;
   }, []);
 
   const cardData2 = useMemo(() => {
     return [
       {
-        icon: <img src={iconSunrise} style={{ width: "25px", height: "25px" }} />,
+        icon: (
+          <img src={iconSunrise} style={{ width: "25px", height: "25px" }} />
+        ),
         type: "sunrise",
         currentValue: `${getTime(sys?.sunrise)} `,
         dynamicValue: `2 hours ago`,
       },
       {
-        icon: <img src={iconSunset} style={{ width: "30px", height: "30px" }} />,
+        icon: (
+          <img src={iconSunset} style={{ width: "30px", height: "30px" }} />
+        ),
         type: "sunset",
         currentValue: `${getTime(sys?.sunset)}`,
         dynamicValue: `In 8 hours`,
@@ -34,23 +39,22 @@ const MySidebar = ({ sys, name, main }) => {
         <p className="my-2">{getTime(new Date().getTime())}</p>
       </div>
       <div className=" justifySidebar">
-      <div >
-        <h5 className="my-0 ">{`${Math.round(main?.temp)}°C`}</h5>
-        <p className="mb-2 "> scattered clouds </p>
-        <hr className="my-1 " />
+        <div>
+          <h5 className="my-0 ">{`${Math.round(main?.temp)}°C`}</h5>
+          <p className="mb-2 "> scattered clouds </p>
+          <hr className="my-1 " />
+        </div>
+        <div>
+          <p className=" m-0 p-0"> Sunrise & Sunset </p>
+        </div>
+        <div className=" d-flex flex-column gap-3 my-2 py-sm-2 py-md-0">
+          {cardData2.map((card, i) => (
+            <div key={i}>
+              <MyCard {...card} />
+            </div>
+          ))}
+        </div>
       </div>
-      <div>
-        <p className=" m-0 p-0"> Sunrise & Sunset </p>
-      </div>
-      <div className=" d-flex flex-column gap-3 my-2">
-        {cardData2.map((card, i) => (
-          <div key={i}>
-            <MyCard {...card} />
-          </div>
-        ))}
-      </div>
-      </div>
-    
     </div>
   );
 };

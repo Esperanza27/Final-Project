@@ -8,7 +8,6 @@ import {
   Row,
 } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-/* import { setRemoveFavorite } from "../redux/actions/favoritesActions"; */
 import { Link, useNavigate } from "react-router-dom";
 import { REMOVE_FAVORITE } from "../../redux/actions/favoritesActions";
 const FavoritesPage = () => {
@@ -17,12 +16,7 @@ const FavoritesPage = () => {
   const favorites = useSelector((state) => state.reducer.list);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  /*  const deleteFavorite = (fav) => {
-    dispatch({
-      type: "REMOVE_FAVORITE",
-      payload: setRemoveFavorite(fav),
-    });
-  }; */
+
   return (
     <>
       <Container fluid className="">

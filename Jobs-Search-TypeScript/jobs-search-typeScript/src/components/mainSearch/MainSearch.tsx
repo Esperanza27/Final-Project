@@ -8,34 +8,10 @@ import { getJobsAction } from "../../reducers/actions/favoriteActions";
 
 const MainSearch = () => {
   const [query, setQuery] = useState("");
-  /*   const [jobs, setJobs] = useState([]); */
+
   const navigate = useNavigate();
 
-  /*   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
-  
-    const handleChange = (e: any) => {
-      setQuery(e.target.value);
-    };
-  
-    const handleSubmit = async (e: any) => {
-      e.preventDefault();
-  
-      try {
-        const response = await fetch(baseEndpoint + query + "&limit=20");
-        if (response.ok) {
-          const { data } = await response.json();
-          setJobs(data);
-        } else {
-          alert("Error fetching results");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }; */
-    //lista di result search
-
   const jobs = useSelector((state:any) => state.job.results) 
-  /* console.log(jobs); */
   
   const dispatch: any = useDispatch()
 

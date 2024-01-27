@@ -8,7 +8,6 @@ const Favorites = () => {
 
     const dispatch = useDispatch();
     const favorites = useSelector((state: any) => state.reducer.list);
-    console.log(favorites);
 
     const navigate = useNavigate();
 

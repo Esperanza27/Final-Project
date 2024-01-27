@@ -1,19 +1,17 @@
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import MyCard from "../../components/myCard/MyCard";
 import NavbarBrand from "react-bootstrap/esm/NavbarBrand";
 import CloseButton from "react-bootstrap/esm/CloseButton";
-/* import Table from "react-bootstrap/Table"; */
 import { useNavigate } from "react-router-dom";
 import iconWind from "../../assets/icons/storm.png";
 import MyTable from "../../components/myTable/MyTable";
 import iconTemperature from "../../assets/icons/temperature.png";
-import iconSunrise from "../../assets/icons/sunrise (1).png";
+import iconSunrise from "../../assets/icons/sunrise.png";
 import iconSunset from "../../assets/icons/sunset.png";
 import iconRain from "../../assets/icons/rain.png";
 import iconHumidity from "../../assets/icons/humidity.png";
-
 
 const ResultPage = () => {
   // assegniamo alle costanti i valori delle risposte delle chiamate di rete
@@ -22,9 +20,6 @@ const ResultPage = () => {
   const navigate = useNavigate();
 
   const { sys, name, main, wind } = weather;
-  const f = { ...forecast };
-  const currentDays = f.list.slice(0, 7);
-  console.log(currentDays);
 
   const getTime = useCallback((time) => {
     return `${new Date(time).getHours()}:${new Date(time).getMinutes()}`;
@@ -80,10 +75,7 @@ const ResultPage = () => {
         dynamicValue: `${main?.humidity}%`,
       },
     ];
-  }, [getTime, sys?.sunrise, sys?.sunset]);
-
-  /* console.log("data weather ", weather);
-  console.log("data forecast ", forecast, new Date(1705676400).getDay()); */
+  }, [getTime, main?.humidity, main?.temp, main?.temp_min, sys?.sunrise, sys?.sunset, wind?.gust, wind?.speed]);
 
   const forecastList = forecast.list || []; // qui è necessario tenere un or [] perche il dato viene dal sevizio quindi all'in it sarà undefined
 
@@ -99,7 +91,7 @@ const ResultPage = () => {
     );
 
     if (!existDayName) {
-      // pusco solo i giorni che non esistono nella lista di appoggio
+      // faccio il push solo dei giorni che non esistono nella lista di appoggio
       forecastListFiltered.push({ dayName, element }); // in questo oggetto avrò il nome del giorno e tutti i dettagli afferenti al giono (temperature, umidità ecc.)
     }
   });
@@ -149,7 +141,6 @@ const ResultPage = () => {
               <MyTable
                 day={li?.dayName}
                 humidity={li?.element.main.humidity}
-                icon1={li?.element.weather[0].icon}
                 tempMax={li?.element.main.temp_max}
                 tempMin={li?.element.main.temp_min}
                 className="px-1"
